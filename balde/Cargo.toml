@@ -8,6 +8,8 @@ edition = "2018"
 foreign-types = "^0.3.2"
 glib = "^0.6.1"
 glib-sys = "^0.7.0"
+bitflags = "*"
+lazy_static = "*"
 
 [dependencies.balde-sys]
 path = "../balde-sys"

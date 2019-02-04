@@ -1,14 +1,17 @@
 use std::env;
+use std::fs::File;
+use std::io::Write;
 use std::path::PathBuf;
 use std::process;
-use std::io::Write;
-use std::fs::File;
-
 
 fn main() {
     let results = pkg_config::probe_library("balde").unwrap();
-    let includes: Vec<String> = results.include_paths.iter().map(|include| format!("-I{}", include.to_str().unwrap())).collect();
-    
+    let includes: Vec<String> = results
+        .include_paths
+        .iter()
+        .map(|include| format!("-I{}", include.to_str().unwrap()))
+        .collect();
+
     // The bindgen::Builder is the main entry point
     // to bindgen, and lets you build up options for
     // the resulting bindings.
@@ -28,5 +31,7 @@ fn main() {
     // Ignore glib's types in order to try and hack the types to use glib-sys
     let start_balde = output_bindings.find("pub const balde").unwrap();
     let mut output_file = File::create(out_path.join("bindings.rs")).unwrap();
-    output_file.write(&output_bindings[start_balde..].as_bytes()).unwrap();
+    output_file
+        .write(&output_bindings[start_balde..].as_bytes())
+        .unwrap();
 }
