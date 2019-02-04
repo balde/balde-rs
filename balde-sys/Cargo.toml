@@ -1,0 +1,14 @@
+[package]
+name = "balde-sys"
+version = "0.1.0"
+authors = ["Jayson Reis <santosdosreis@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+glib-sys = "^0.7.0"
+gio-sys = "*"
+gtypes = "*"
+
+[build-dependencies]
+bindgen = "*"
+pkg-config = "*"

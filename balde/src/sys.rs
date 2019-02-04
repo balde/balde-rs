@@ -1,0 +1,2 @@
+struct BaldeApp {}
+enum BaldeAppRef {}
